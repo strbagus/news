@@ -9,4 +9,8 @@ export default defineNuxtConfig({
       key: process.env.NEWS_KEY,
     },
   },
+  routes: {
+    '/': { prerender: true },
+    '/*': { cors: true }
+  }
 })
