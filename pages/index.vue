@@ -62,6 +62,11 @@ useHead({
 </script>
 <template>
   <div class="max-w-[1000px] mx-auto pt-20 md:pt-28 pb-5 md:pb-10">
+    <div v-if="errors" class="max-w-[1000px] mb-3 mx-auto text-white flex justify-center">
+      <div class="bg-red-500 py-3 px-5 rounded-xl">
+        <span>Sorry Error: <b>{{ errors }}</b>. Try Again Later!</span>
+      </div>
+    </div>
     <header>
       <div class="flex flex-wrap items-center">
         <div class="w-full md:w-2/3 px-1">

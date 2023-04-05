@@ -51,11 +51,11 @@ useHead({
     { name: 'description', content: `Read the latest ${queryParam.value} news from around the world on News Portal. Get up-to-date news, analysis, and expert opinions.` },
     { name: 'og:description', content: `Read the latest ${queryParam.value} news from around the world on News Portal. Get up-to-date news, analysis, and expert opinions.` },
     { name: 'og:title', content: `Latest ${queryParam.value} News - StarbNews`},
-    { name: 'og:link', content: `${fullUrl.value}` },
+    { name: 'og:link', content: fullUrl.value },
     { name: 'og:image', content: '/image.jpg' },
     { name: 'twitter:description', content: `Read the latest ${queryParam.value} news from around the world on News Portal. Get up-to-date news, analysis, and expert opinions.` },
     { name: 'twitter:title', content: `Latest ${queryParam.value} News - StarbNews`},
-    { name: 'twitter:link', content: `${fullUrl._value}` },
+    { name: 'twitter:link', content: fullUrl._value },
     { name: 'twitter:image', content: '/image.jpg' },
 
   ]
@@ -63,7 +63,11 @@ useHead({
 </script>
 <template>
   <div class="pt-20 md:pt-28 max-w-[1000px] mx-auto pb-10 min-h-screen">
-    <h1 class="text-4xl font-medium capitalize px-2">{{ queryParam }}</h1>
+    <div v-if="errors" class="max-w-[1000px] mb-3 mx-auto text-white flex justify-center">
+      <div class="bg-red-500 py-3 px-5 rounded-xl">
+        <span>Sorry Error: <b>{{ errors }}</b>. Try Again Later!</span>
+      </div>
+    </div>
     <div v-if="news">
       <NewsCardThree v-for="n in news" :url="n.url" :title="n.title" :img="n.urlToImage" :source="n.source.name" :dateAt="formatDate(n.publishedAt)" :author="n.author" :desc="limitChar(n.description, 150)" />
     </div>

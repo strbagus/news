@@ -1,6 +1,5 @@
 <script setup>
 import { ref, onMounted } from 'vue'
-const error = ref(null)
 onMounted(() => {
   const menu = document.querySelector('#navMenu')
   const blocker = document.querySelector('#navBlocker')
@@ -22,7 +21,6 @@ onMounted(() => {
     window.location.href = `/search?q=${query}`
   })
 })
-
 </script>
 <template>
   <nav class="bg-gray-50 fixed w-full top-0 z-50">
@@ -64,7 +62,7 @@ onMounted(() => {
           <li class="mx-3 hover:text-rose-800 mt-2 mb-4 md:mt-0 md:mb-0"><NuxtLink href="/search?q=fashions">FASHION</NuxtLink></li>
         </ul>
       </div>
-      <div v-if="error" class="max-w-[1000px] mx-auto text-white text-center pt-3 pb-2">Sorry Error: <b>{{ error }}</b>. Try Again Later! </div>
+
     </div>
   </nav>
   <div class="z-40 fixed w-full h-screen bg-black opacity-70 hidden" id="navBlocker"></div>
