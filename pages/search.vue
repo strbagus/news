@@ -69,15 +69,14 @@ useHead({
     </div>
     <div v-if="news">
       <NewsCardThree v-for="n in news" :url="n.url" :title="n.title" :img="n.urlToImage" :source="n.source.name" :dateAt="formatDate(n.publishedAt)" :author="n.author" :desc="limitChar(n.description, 150)" />
+      <div v-if="news.length==0" class="text-center italic">No related article found.</div>
     </div>
 
-    <!--<NewsCardThree v-else url="#" title="Unavailable" img="" source="unavailable" dateAt="unavailable" author="unavailable" desc="unavailable" />-->
     <div v-else class="border-b-2 border-blue-800  flex items-center hover:border-rose-800 flex-wrap py-5">
       <div class="w-1/3 px-2">
         <div class="loader-img w-full relative bg-gray-500" style="aspect-ratio: 3/2"></div>
       </div>
       <div class="w-2/3 px-2 text-xl md:text-2xl flex items-end">
-        <!--<div class="border-l-4 border-rose-800 pl-2 text-sm md:text-base">Loading</div>-->
         <div v-if="errors" class="font-medium">Load Failed!</div>
         <template v-else>
           <div class="font-medium">Loading</div>
